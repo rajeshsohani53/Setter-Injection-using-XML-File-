@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- ============================================================
+         1. SIMPLEST BEAN — no dependencies, no properties
+         ============================================================ -->
+  <!-- <bean id="engine" class="com.raj.spring.Engine"/> -->  
+
+
+    <!-- ============================================================
+         2. BEAN WITH SETTER INJECTION (property tag)
+         ============================================================ -->
+    <bean name="student1" class="com.rajesh.springcore.SpringCore_Practice01.Student"> 	
+        <property name="studentId" value="2"/>
+        <property name="studentName" value="Rajesh"/>
+        <property name="studentAddress" value="CSN"/>
+
+        <!-- Reference to another bean -->
+       <!-- <property name="engine" ref="engine"/> --> 
+    </bean>
+
+
+    <!-- ============================================================
+         3. BEAN WITH CONSTRUCTOR INJECTION
+         ============================================================ -->
+   <!-- <bean id="employee" class="com.raj.spring.Employee">
+        <constructor-arg value="101"/>
+        <constructor-arg value="Raj"/>
+        <constructor-arg value="50000.0"/>
+    </bean>  -->   
+
+    <!-- Constructor injection with named args (safer if constructor has many params) -->
+    <!-- <bean id="employee2" class="com.raj.spring.Employee">
+        <constructor-arg name="id" value="102"/>
+        <constructor-arg name="name" value="Prajakta"/>
+        <constructor-arg name="salary" value="55000.0"/>
+    </bean> -->  
+
+
+    <!-- ============================================================
+         4. BEAN SCOPES — singleton (default) vs prototype
+         ============================================================ -->
+  <!--   <bean id="singletonBean" class="com.raj.spring.Counter" scope="singleton"/>
+    <bean id="prototypeBean" class="com.raj.spring.Counter" scope="prototype"/>
+ -->  
+
+    <!-- ============================================================
+         5. LIFECYCLE METHODS — init-method aur destroy-method
+         ============================================================ -->
+   <!--  <bean id="database"
+          class="com.raj.spring.Database"
+          init-method="connect"
+          destroy-method="disconnect">
+        <property name="url" value="jdbc:mysql://localhost:3306/testdb"/>
+    </bean>
+-->
+
+    <!-- ============================================================
+         6. COLLECTIONS INJECTION (List, Set, Map, Properties)
+         ============================================================ -->
+    <!-- <bean id="student" class="com.raj.spring.Student">
+        <property name="name" value="Raj"/>-->
+
+        <!-- List -->
+     <!--    <property name="subjects">
+            <list>
+                <value>Java</value>
+                <value>Spring</value>
+                <value>Hibernate</value>
+            </list>
+        </property>-->
+
+        <!-- Set -->
+     <!--    <property name="hobbies">
+            <set>
+                <value>Coding</value>
+                <value>Gym</value>
+            </set>
+        </property>
+ -->
+        <!-- Map -->
+   <!--      <property name="marks">
+            <map>
+                <entry key="Java" value="85"/>
+                <entry key="Spring" value="90"/>
+            </map>
+        </property>
+-->
+        <!-- Properties -->
+       <!--  <property name="contact">
+            <props>
+                <prop key="email">raj@example.com</prop>
+                <prop key="phone">9999999999</prop>
+            </props>
+        </property>
+    </bean>
+
+ -->
+    <!-- ============================================================
+         7. ANNOTATION-BASED CONFIG (agar tum @Component use karna chahte ho)
+         Ye line uncomment karne pe Spring given package mein
+         @Component, @Service, @Repository, @Autowired scan karega
+         ============================================================ -->
+    <!--
+    <context:component-scan base-package="com.raj.spring"/>
+    -->
+
+
+    <!-- ============================================================
+         8. PROPERTIES FILE LOAD (externalize config)
+         src/main/resources/app.properties banao, fir ${db.url} use kar sakte ho
+         ============================================================ -->
+    <!--
+    <context:property-placeholder location="classpath:app.properties"/>
+    -->
+
+</beans>
